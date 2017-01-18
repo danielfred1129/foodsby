@@ -1,0 +1,100 @@
+<div id="item-view" data-init="app.views.item.init"
+     data-before-show="app.views.item.beforeShow"
+     data-show="app.views.item.show"
+     data-role="view" data-title="Customize"
+     data-model="app.views.item.viewModel">
+    <header data-role="header">
+        <div data-role="navbar">
+            <a class="nav-button" data-align="left" data-transition="slide:left reverse" data-role="button"
+               href="#submenu-view">Back</a>
+            <span data-role="view-title"></span>
+            <a data-align="right" data-icon="cart" data-role="button" href="#confirm-view"></a>
+            <a data-align="right" data-icon="drawer-button" data-rel="drawer" data-role="button"
+               href="#settings-view"></a>
+        </div>
+    </header>
+    <div class="view-content">
+        <div class="item-disclaimer">* Required fields are marked with a star</div>
+        <ul id="item-list" data-role="listview"></ul>
+    </div>
+    <script id="item-list-tmp" type="text/x-kendo-template">
+        <div class="question-text bold # if (MinimumSelection > 0) {
+        # required # } #">#: DisplayText #
+            <div class="error-text"></div>
+        </div>
+        <ul data-role="listview"# if (MinimumSelection > 0) { #
+        class="required"
+        # }
+
+        # data-min="#:MinimumSelection#" data-max="#:MaximumSelection#">
+
+        #var answers = function printA() { #
+        <li class="answer a-for-#: this.ParentQuestionId #">
+            <label>#: this.DisplayText #
+                #if (this.Price > 0) { #
+                <span class='item-price'>(add #: '$' + parseFloat(this.Price, 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString() #)</span>
+                # }
+                if (this.ShowAsRadio) { #
+                <input class="answer" type="radio" name="#: this.ParentQuestionId #"
+                # if (this.AutoSelected) 'checked'; #
+                value="#:this.AnswerId#"
+                data-depth="#: depth #"/>
+                # }
+                else { #
+                <input class="answer" type="checkbox" name="#: this.ParentQuestionId #"
+                # if (this.AutoSelected) 'checked'; #
+                value="#:this.AnswerId#"
+                data-depth="#: depth #"/>
+                # } #</label>
+        </li>
+        # }
+
+        var answerQuestions = function printAQ() {
+        if (this.QuestionItems.length > 0) { #
+        <li class="question q-for-#: this.AnswerId #" style="display:none;">
+            <ul data-role="listview">
+                # $.each(this.QuestionItems, questions); #
+            </ul>
+        </li>
+        # }
+        }
+
+        var questions = function printQ() { #
+        <li>
+            <div class="question-text bold # if (this.MinimumSelection > 0) {
+                # required # }
+                    
+                     #">#: this.DisplayText #
+                <div class="error-text"></div>
+            </div>
+            <ul data-role="listview"
+            # if (this.MinimumSelection > 0) {
+            # class="required" # }
+            #
+            data-min="#: this.MinimumSelection #"
+            data-max="#: this.MaximumSelection #">
+            #
+            depth++;
+            $.each(this.AnswerItems, answers);
+            $.each(this.AnswerItems, answerQuestions);
+            depth--;
+            #
+            </ul>
+        </li>
+        # }
+
+        var depth = 0;
+        $.each(AnswerItems, answers);
+        $.each(AnswerItems, answerQuestions); #
+        </ul>
+    </script>
+    <div class="order-ops">
+        <label>Special Instructions</label>
+        <textarea name="special"></textarea>
+
+        <div class="ops-buttons">
+            <div data-role="button" class="add-item">Next Item</div>
+            <div data-role="button" class="checkout">Checkout</div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+<div id="contacts-view" data-init="app.views.contacts.init"
+     data-before-show="app.views.contacts.beforeShow"
+     data-show="app.views.contacts.show"
+     data-role="view" data-title="Invite Contacts"
+     data-model="app.views.contacts.viewModel">
+    <header data-role="header">
+        <div data-role="navbar">
+            <a class="nav-button" data-align="left" data-transition="slide:left reverse"
+               data-role="backbutton">Cancel</a>
+            <span data-role="view-title"></span>
+        </div>
+    </header>
+    <div class="view-content no-pad">
+        <ul id="contacts-list" data-role="listview"></ul>
+    </div>
+    <script id="contacts-list-tmp" type="text/x-kendo-template">
+        <label>
+            <input type="checkbox"/>
+
+            <h3 class="delivery-list-text bold">#: name #</h3>
+
+            <p class="delivery-list-text">#: email #</p>
+        </label>
+    </script>
+    <footer data-role="footer">
+        <div class="ops-buttons">
+            <div data-role="button" data-bind="enabled: canInvite, click: onInvite">Send Invitations</div>
+        </div>
+    </footer>
+</div>

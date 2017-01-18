@@ -1,0 +1,31 @@
+<div id="forgot-view" class="start" data-init="app.views.forgot.init"
+     data-before-show="app.views.forgot.beforeShow"
+     data-show="app.views.forgot.show"
+     data-role="view" data-title="Login"
+     data-model="app.views.forgot.viewModel">
+    <div class="view-content">
+        <div class="logo"></div>
+        <div class="slogan">Enter your email address to have the reset password link sent.</div>
+        <form class="entry-form" data-bind="events: { keyup: checkEnter }">
+            <table>
+                <tbody>
+                <tr>
+                    <td colspan="2">
+                        <input type="email" placeholder="Email address" data-bind="value: username"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <div id="forgot" data-role="button" data-bind="click: onReset">Send Password Link</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="font-size:0.8em;color:white;">
+                        <a href="#login-view">Cancel</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+</div>

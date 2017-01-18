@@ -1,0 +1,35 @@
+<div id="office-view" data-init="app.views.office.init"
+     data-before-show="app.views.office.beforeShow"
+     data-show="app.views.office.show"
+     data-role="view" data-title="Select Office"
+     data-model="app.views.office.viewModel">
+    <header data-role="header">
+        <div data-role="navbar">
+            <a class="nav-button" data-align="left" data-transition="slide:left reverse"
+               data-role="backbutton">Cancel</a>
+            <span data-role="view-title"></span>
+        </div>
+    </header>
+    <div class="view-content no-pad">
+        <h3 style="margin-bottom:0;color:#F15F49;">
+            Search your office
+        </h3>
+
+        <p class="no-location start-hidden" style="margin-bottom:0;margin-top:0;">
+            We could not find your current location. Please search for your company below
+        </p>
+        <ul id="office-list" data-role="listview"></ul>
+    </div>
+    <script id="office-list-tmp" type="text/x-kendo-template">
+        <a rel="#: DeliveryLocationId #" data-office="#: OfficeId #">
+            <h3 class="delivery-list-text bold">#: OfficeName #</h3>
+
+            <p class="delivery-list-text">#: DeliveryLine1 + " " + LastLine.slice(0,-5) #</p>
+        </a>
+    </script>
+    <footer data-role="footer">
+        <div class="ops-buttons">
+            <a href='#company-view' data-role="button">Add Company</a>
+        </div>
+    </footer>
+</div>

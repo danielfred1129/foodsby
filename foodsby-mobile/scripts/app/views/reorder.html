@@ -1,0 +1,42 @@
+<div id="reorder-view" data-init="app.views.reorder.init"
+     data-before-show="app.views.reorder.beforeShow"
+     data-show="app.views.reorder.show"
+     data-role="view" data-title="Select item"
+     data-model="app.views.reorder.viewModel">
+    <header data-role="header">
+        <div data-role="navbar">
+            <a class="nav-button" data-align="left" data-transition="slide:left reverse" data-role="button"
+               href="#menu-view">Back</a>
+            <span data-role="view-title"></span>
+            <a data-align="right" data-icon="cart" data-role="button" href="#confirm-view"></a>
+            <a data-align="right" data-icon="drawer-button" data-rel="drawer" data-role="button"
+               href="#settings-view"></a>
+        </div>
+    </header>
+    <div class="view-content no-pad">
+        <div class="location-bar">
+            <div class="location-bar-image"></div>
+            <div class="location-header bold" data-bind="text: reorderName"></div>
+            <div class="location-instructions" data-bind="text: reorderText"></div>
+        </div>
+        <ul id="reorder-list" data-role="listview"></ul>
+    </div>
+    <script id="reorder-list-tmp" type="text/x-kendo-template">
+        <a class="reorder-item-toggle">
+            # $.each(OrderItems, function(i,item) { #
+            <h3 class="delivery-list-text bold" style="padding-right:5em;font-size:1em;">#: item.ItemName #</h3>
+            <ul class="confirm-sublist start-hidden">
+                # $.each(item.Modifiers,function(i,mod){
+                if (mod.Answers.length > 0) { #
+                <li class="confirm-sublist-item confirm-sublist-#: mod.Depth#">#: mod.Answers[0].ItemName #</li>
+                # }
+                }) #
+                <li class="confirm-sublist-item">Special Instructions: #: item.SpecialInstructions ?
+                    item.SpecialInstructions : "(N/A)" #
+                </li>
+            </ul>
+            # }); #
+        </a>
+        <a data-role="detailbutton" class="reorder-item-add" rel="#: OrderHistoryId #" data-style="rowinsert"></a>
+    </script>
+</div>

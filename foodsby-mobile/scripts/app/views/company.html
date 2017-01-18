@@ -1,0 +1,72 @@
+<div id="company-view" data-init="app.views.company.init"
+     data-before-show="app.views.company.beforeShow"
+     data-show="app.views.company.show"
+     data-role="view" data-title="Add Company"
+     data-model="app.views.company.viewModel">
+    <header data-role="header">
+        <div data-role="navbar">
+            <a class="nav-button" data-align="left" data-transition="slide:left reverse"
+               data-role="backbutton">Cancel</a>
+            <span data-role="view-title"></span>
+        </div>
+    </header>
+    <div class="view-content">
+        <table class="foodsby-form account">
+            <thead>
+            <tr>
+                <th>Add a New Location</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <input type="text" data-bind="value: name" placeholder="Company Name"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="text" data-bind="value: address" placeholder="Street Address"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="number" data-bind="value: suite" placeholder="Suite #"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="text" data-bind="value: city" placeholder="City"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="text" data-bind="value: state" placeholder="State"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="text" data-bind="value: zip" placeholder="Zip"/>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <div class="ops-buttons">
+            <div data-role="button" class="company" data-bind="click: onRegister">Add</div>
+        </div>
+    </div>
+    <div data-role="modalview" id="modalview-address" style='height:50%;width:90%;border:1px solid #555;'>
+        <div data-role="header">
+            <div data-role="navbar" style="padding-top:0;">
+                <span>Verify Address</span>
+                <a data-bind="click: onCloseModal" data-role="button" data-align="right">Cancel</a>
+            </div>
+        </div>
+        <ul data-role="listview" id="company-address"></ul>
+        <script id="address-tmp" type="text/x-kendo-template">
+            <a data-address="#: CandidateAddressId #">
+                #: DeliveryLine1 # <br/> #: LastLine #
+            </a>
+        </script>
+    </div>
+</div>

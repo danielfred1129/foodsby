@@ -1,0 +1,42 @@
+<div id="status-view" data-init="app.views.status.init"
+     data-before-show="app.views.status.beforeShow"
+     data-show="app.views.status.show"
+     data-role="view" data-title="Build Location"
+     data-model="app.views.status.viewModel">
+    <header data-role="header">
+        <div data-role="navbar">
+            <span data-role="view-title"></span>
+            <a data-align="right" data-icon="drawer-button" data-rel="drawer" data-role="button"
+               href="#settings-view"></a>
+        </div>
+    </header>
+    <div class="view-content">
+        <div class="office-head">
+            <h3 data-bind="text: officeName"></h3>
+
+            <p><span data-bind="text: officeCount"></span> joined</p>
+
+            <p data-bind="text: officeAddress"></p>
+        </div>
+        <div class="office-status">
+            <h3>Location Status: Pending</h3>
+
+            <div>
+                <p>
+                    <span data-bind="text: officeCountText"></span> joined this location.
+                </p>
+
+                <p>
+                    Keep inviting co-workers and you'll be on your way to having restaurants delivering to your
+                    location.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div data-role="footer">
+        <div data-role="tabstrip" data-selected-index="2">
+            <a data-icon="contacts" href="#invite-view">Invite Co-Workers</a>
+            <a data-icon="info" href="#status-view">Status</a>
+        </div>
+    </div>
+</div>

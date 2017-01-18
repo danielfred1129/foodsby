@@ -1,0 +1,39 @@
+<div id="submenu-view" data-init="app.views.submenu.init"
+     data-before-show="app.views.submenu.beforeShow"
+     data-show="app.views.submenu.show"
+     data-role="view" data-title="Select item"
+     data-model="app.views.submenu.viewModel">
+    <header data-role="header">
+        <div data-role="navbar">
+            <a class="nav-button" data-align="left" data-transition="slide:left reverse" data-role="button"
+               href="#menu-view">Back</a>
+            <span data-role="view-title"></span>
+            <a data-align="right" data-icon="cart" data-role="button" href="#confirm-view"></a>
+            <a data-align="right" data-icon="drawer-button" data-rel="drawer" data-role="button"
+               href="#settings-view"></a>
+        </div>
+    </header>
+    <div class="view-content no-pad">
+        <div class="location-bar">
+            <div class="location-bar-image"></div>
+            <div class="location-header bold" data-bind="text: submenuName"></div>
+            <div class="location-instructions" data-bind="text: submenuText"></div>
+        </div>
+        <ul id="submenu-list" data-role="listview"></ul>
+    </div>
+    <script id="submenu-list-tmp" type="text/x-kendo-template">
+        <a rel="#: MenuItemId #
+        ">
+            # if (Price > 0) { #
+            <p class="submenu-list-price">#: '$' + parseFloat(Price, 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g,
+                "$1,").toString() #</p>
+            # }
+            #
+            <h3 class="delivery-list-text bold" style="padding-right:5em;font-size:1em;">#: DisplayText #
+            </h3>
+            # if (Description != null) { #
+            <p class="delivery-list-text">#: Description #</p>
+            # } #
+        </a>
+    </script>
+</div>

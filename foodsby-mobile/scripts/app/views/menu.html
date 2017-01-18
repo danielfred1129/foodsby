@@ -1,0 +1,43 @@
+<div id="menu-view" data-init="app.views.menu.init"
+     data-before-show="app.views.menu.beforeShow"
+     data-show="app.views.menu.show"
+     data-role="view" data-title="Select Menu"
+     data-model="app.views.menu.viewModel">
+    <header data-role="header">
+        <div data-role="navbar">
+            <a class="nav-button" data-align="left" data-transition="slide:left reverse" data-role="button"
+               href="#dashboard-view">Back</a>
+            <span data-role="view-title"></span>
+            <a data-align="right" data-icon="cart" data-role="button" href="#confirm-view"></a>
+            <a data-align="right" data-icon="drawer-button" data-rel="drawer" data-role="button"
+               href="#settings-view"></a>
+        </div>
+    </header>
+    <div class="view-content no-pad">
+        <div class="location-bar">
+            <div class="location-bar-image"></div>
+            <div class="location-header bold" data-bind="text: deliveryTime"></div>
+            <div class="location-instructions" data-bind="text: deliveryInstructions"></div>
+        </div>
+        <ul id="menu-reorder-list" data-role="listview">
+            <li style="border-bottom:1px outset #5B9BD5;">
+                <a href="#reorder-view">
+                    <h3 class="delivery-list-text bold" style="font-size:1em;">Your Past Orders</h3>
+
+                    <p class="delivery-list-text">Fly through the menu pages by re-ordering one of your past orders.</p>
+                </a>
+            </li>
+        </ul>
+        <ul id="menu-list" data-role="listview"></ul>
+    </div>
+    <script id="menu-list-tmp" type="text/x-kendo-template">
+        <a rel="#: SubMenuId #">
+            <h3 class="delivery-list-text bold" style="font-size:1em;">#: SubMenuName #
+
+            </h3>
+            # if (Description != null) { #
+            <p class="delivery-list-text">#: Description #</p>
+            # } #
+        </a>
+    </script>
+</div>

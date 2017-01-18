@@ -1,0 +1,132 @@
+<div id="checkout-view" data-init="app.views.checkout.init"
+     data-before-show="app.views.checkout.beforeShow"
+     data-show="app.views.checkout.show"
+     data-role="view" data-title="Checkout"
+     data-model="app.views.checkout.viewModel">
+    <header data-role="header">
+        <div data-role="navbar">
+            <a class="nav-button" data-align="left" data-transition="slide:left reverse" data-role="button"
+               href="#confirm-view">Back</a>
+            <span data-role="view-title"></span>
+        </div>
+    </header>
+    <div class="view-content">
+
+        <table class="foodsby-form card">
+            <thead>
+            <tr>
+                <th>Credit Card Information</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <input type="text" data-bind="value: name" placeholder="Name"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="tel" data-bind="value: cc" placeholder="Credit Card Number"/>
+                </td>
+            </tr>
+            <tr>
+                <td class="foodsby-dropdown no-padding no-margin">
+                    <input id="c-exp-month"/>
+                </td>
+            </tr>
+            <tr>
+                <td class="foodsby-dropdown no-padding no-margin">
+                    <input id="c-exp-year"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="tel" data-bind="value: cvv" placeholder="CVV"/>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <table class="foodsby-form address">
+            <thead>
+            <tr>
+                <th>Billing Address</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <input type="text" data-bind="value: address1" placeholder="Billing Address Line 1"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="text" data-bind="value: address2" placeholder="Billing Address Line 2"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="text" data-bind="value: city" placeholder="City"/>
+                </td>
+            </tr>
+            <tr>
+                <td class="foodsby-dropdown no-padding no-margin">
+                    <input id="c-state"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="tel" data-bind="value: zip" placeholder="Zip"/>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <div class="foodsby-switch">Save credit card for future orders <input id="c-save"/></div>
+
+        <table class="foodsby-form start-hidden">
+            <thead>
+            <tr>
+                <th>Promotion Code</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <input type="text" class="code-entry" placeholder="Enter Coupon Code"/>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="code-caption"></div>
+
+        <div class="ops-buttons">
+            <div data-role="button" class="code-apply" data-bind="click: onPromoCode">Apply Code</div>
+            <div data-role="button" class="checkout" data-bind="click: onRegister">Place Order</div>
+        </div>
+    </div>
+    <footer data-role="footer">
+        <table class='foodsby'>
+            <tr>
+                <th>Subtotal</th>
+                <td class='subtotal'>$0.00</td>
+            </tr>
+            <tr class='discount-row start-hidden'>
+                <th>Discount</th>
+                <td class='discount'>$0.00</td>
+            </tr>
+            <tr>
+                <th>Delivery</th>
+                <td class='delivery'>$0.00</td>
+            </tr>
+            <tr>
+                <th>Tax</th>
+                <td class='tax'>$0.00</td>
+            </tr>
+            <tr class='emphasize'>
+                <th>Total</th>
+                <td class='total bold'>$0.00</td>
+            </tr>
+        </table>
+    </footer>
+</div>

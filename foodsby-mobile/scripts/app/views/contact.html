@@ -1,0 +1,51 @@
+<div id="contact-view" data-init="app.views.contact.init"
+     data-before-show="app.views.contact.beforeShow"
+     data-show="app.views.contact.show"
+     data-role="view" data-title="Customer Info"
+     data-model="app.views.contact.viewModel">
+    <header data-role="header">
+        <div data-role="navbar">
+            <a class="nav-button" data-align="left" data-transition="slide:left reverse" data-role="backbutton">Back</a>
+            <span data-role="view-title"></span>
+        </div>
+    </header>
+    <div class="view-content">
+        <p>
+            This will only be used if the restaurant has a question about your order.
+        </p>
+        <table class="foodsby-form account">
+            <thead>
+            <tr>
+                <th>Customer Contact Information</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <input type="email" disabled="true" data-bind="value: email" placeholder="Email"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="text" data-bind="value: first" placeholder="First Name"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="text" data-bind="value: last" placeholder="Last Name"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="tel" data-bind="value: phone" placeholder="Phone Number"/>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <div class="ops-buttons">
+            <div data-role="button" class="contact" data-bind="click: onRegister, visible: isNotFree">Continue</div>
+            <div data-role="button" data-bind="click: onRegister, visible: isFree" class="checkout">Process</div>
+        </div>
+    </div>
+</div>

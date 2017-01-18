@@ -1,0 +1,35 @@
+<div id="settings-view" data-init="app.views.settings.init"
+     data-before-show="app.views.settings.beforeShow"
+     data-show="app.views.settings.show"
+     data-role="drawer" data-title="Settings"
+     data-position="right"
+     data-views="['dashboard-view','menu-view','submenu-view','item-view', 'confirm-view', 'contact-view','checkout-view','checkout_saved-view','receipt-view', 'invite-view', 'status-view', 'reorder-view']"
+     data-model="app.views.settings.viewModel">
+    <header data-role="header">
+        <div data-role="navbar"></div>
+    </header>
+    <div class="view-content no-pad">
+        <ul id="settings-list" data-role="listview" data-type="group">
+            <li>
+                More Options
+                <ul>
+                    <li id="settings-dashboard">
+                        <a data-icon="home" href="#dashboard-view" data-transition="none">Home</a>
+                    </li>
+                    <li>
+                        <a data-icon="contacts" href="#profile-view" data-transition="none">User Profile</a>
+                    </li>
+                    <li id="settings-notifications">
+                        <a data-icon="info" href="#notifications-view" data-transition="none">Notifications</a>
+                    </li>
+                    <li>
+                        <a data-icon="globe" href="#office-view" data-transition="none">Change Office</a>
+                    </li>
+                    <li>
+                        <a data-icon="off" href="#login-view?logout=true" data-transition="none">Logout</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>

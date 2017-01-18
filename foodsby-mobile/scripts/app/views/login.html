@@ -1,0 +1,44 @@
+<div id="login-view" class="start" data-init="app.views.login.init"
+     data-before-show="app.views.login.beforeShow"
+     data-show="app.views.login.show"
+     data-role="view" data-title="Login"
+     data-model="app.views.login.viewModel">
+    <div class="view-content">
+        <div class="logo"></div>
+        <div class="slogan">A lunch program for you at work,<br/>created with the restaurants you already love</div>
+        <form class="entry-form" data-bind="events: { keyup: checkEnter }">
+            <table>
+                <tbody>
+                <tr>
+                    <td colspan="2">
+                        <input type="email" placeholder="Email address" data-bind="value: username"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="password" placeholder="Password" data-bind="value: password"
+                               style="margin-bottom:5px;"/>
+                    </td>
+                </tr>
+                <tr style="text-align:left;font-size:0.8em;color:white;">
+                    <td>
+                    </td>
+                    <td style="text-align:right;">
+                        <a href="#forgot-view">Forgot Password</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <div id="login" data-role="button" data-bind="click: onLogin">Login</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="font-size:0.8em;color:white;">
+                        <a href="#register-view">Sign Up for Foodsby</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+</div>

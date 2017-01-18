@@ -1,0 +1,42 @@
+<div id="notifications-view" data-init="app.views.notifications.init"
+     data-before-show="app.views.notifications.beforeShow"
+     data-show="app.views.notifications.show"
+     data-role="view" data-title="Notifications"
+     data-model="app.views.notifications.viewModel">
+    <header data-role="header">
+        <div data-role="navbar">
+            <span data-role="view-title"></span>
+            <a class="nav-button" data-align="right" data-transition="slide:left reverse"
+               data-role="backbutton">Done</a>
+        </div>
+    </header>
+    <div class="view-content no-pad">
+        <p>Set up the restaurants from which you'd like to receive notifications. You'll receive push notifications at
+            your specified time before the order cutoff time.</p>
+
+        <ul data-role="listview" style="border-bottom: 1px outset #5B9BD5;">
+            <li>
+                <a>
+                    <label>
+                        Notification Time
+                        <select id="notif-time">
+                            <option value="30">30 min prior</option>
+                            <option value="45">45 min prior</option>
+                            <option value="60">1 hour prior</option>
+                            <option value="120">2 hours prior</option>
+                        </select>
+                    </label>
+                </a>
+            </li>
+        </ul>
+        <ul id="notification-list" data-role="listview"></ul>
+    </div>
+    <script id="notif-template" type="text/x-kendo-template">
+        <label>#: Store.Restaurant.RestaurantName #
+
+            <input type="checkbox" # if (localStorage.getItem('notification' + StoreId) !== 'false') {
+            # checked #}
+
+            # rel="#: StoreId #"/> </label>
+    </script>
+</div>

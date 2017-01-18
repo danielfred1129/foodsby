@@ -1,0 +1,129 @@
+<div id="confirm-view" data-init="app.views.confirm.init"
+     data-before-show="app.views.confirm.beforeShow"
+     data-show="app.views.confirm.show"
+     data-role="view" data-title="Order Summary"
+     data-model="app.views.confirm.viewModel">
+    <header data-role="header">
+        <div data-role="navbar">
+            <a class="nav-button" data-align="left" data-transition="slide:left reverse" data-role="button"
+               href="#menu-view">Back</a>
+            <span data-role="view-title"></span>
+            <a data-align="right" data-icon="drawer-button" data-rel="drawer" data-role="button"
+               href="#settings-view"></a>
+        </div>
+    </header>
+    <div class="view-content no-pad">
+        <div class="location-bar">
+            <div class="location-bar-image"></div>
+            <div class="location-header bold" data-bind="text: deliveryTime"></div>
+            <div class="location-instructions" data-bind="text: deliveryInstructions"></div>
+        </div>
+        <ul id="confirm-list" data-role="listview"></ul>
+        <ul data-role="listview">
+            <li style="border-top:1px inset #5B9BD5;">
+                <a href="#menu-view">
+                    Add Item
+                </a>
+                <a data-role="detailbutton" data-style="rowinsert" href="#menu-view"></a>
+            </li>
+            <li>
+                <a class='confirm-insert-code'>
+                    Apply Promotion Code
+                </a>
+                <a class='confirm-insert-code' data-role="detailbutton" data-style="rowinsert"></a>
+                <table class="confirm-code-entry foodsby-form account start-hidden">
+                    <thead>
+                    <tr>
+                        <th>Promotion Code</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>
+                            <input type="text" class="k-input code-entry" placeholder="Enter Coupon Code"/>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="code-caption"></div>
+                <div class="confirm-code-entry ops-buttons">
+                    <div data-role="button" class="code-apply" data-bind="click: onPromoCode">Apply Code</div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <script id="confirm-list-tmp" type="text/x-kendo-template">
+        <a class="confirm-item-toggle">
+            # if (Price > 0) { #
+            <p class="submenu-list-price">#: '$' + parseFloat(Price, 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g,
+                "$1,").toString() #</p>
+            # }
+
+            #
+            <h3 class="delivery-list-text bold" style="padding-right:5em;font-size:1em;">#: ItemName #</h3>
+            <ul class="confirm-sublist start-hidden">
+                # $.each(Modifiers,function(i,item){
+                if (item.Answers.length > 0) { #
+                <li class="confirm-sublist-item confirm-sublist-#: item.Depth#">#: item.Answers[0].ItemName # #:
+                    item.Answers[0].Price > 0 ? "$"+item.Answers[0].Price.toFixed(2) : "" #
+                </li>
+                # }
+                }) #
+                <li class="confirm-sublist-item">Special Instructions: #: SpecialInstructions ? SpecialInstructions :
+                    "(N/A)" #
+                </li>
+            </ul>
+        </a>
+        <a class="confirm-delete" data-id="#: OrderItemId #" data-role="detailbutton" data-style="rowdelete"></a>
+    </script>
+    <footer data-role="footer">
+        <table class='foodsby'>
+            <tr>
+                <th>Subtotal</th>
+                <td class='subtotal'>$0.00</td>
+            </tr>
+            <tr class='discount-row start-hidden'>
+                <th>Discount</th>
+                <td class='discount'>$0.00</td>
+            </tr>
+            <tr>
+                <th>Delivery</th>
+                <td class='delivery'>$0.00</td>
+            </tr>
+            <tr>
+                <th>Tax</th>
+                <td class='tax'>$0.00</td>
+            </tr>
+            <tr class='emphasize'>
+                <th>Total</th>
+                <td class='total bold'>$0.00</td>
+            </tr>
+        </table>
+        <div class="ops-buttons">
+            <div data-role="button" data-bind="enabled: isExpress, visible: isNotFree, click: onExpress"
+                 class="express">Express Checkout
+            </div>
+            <div data-role="button" data-bind="click: onCheckout, enabled: canCheckout, visible: isNotFree"
+                 class="checkout">Checkout
+            </div>
+            <div data-role="button" data-bind="click: onFreeCheckout, enabled: canCheckout, visible: isFree"
+                 class="checkout">Process
+            </div>
+        </div>
+    </footer>
+    <div data-role="modalview" id="modalview-express" style='height:30%;width:90%;border:1px solid #555;'>
+        <div data-role="header">
+            <div data-role="navbar" style="padding-top:0;">
+                <span>Checkout</span>
+                <a data-bind="click: onCloseModal" data-role="button" data-align="right">Cancel</a>
+            </div>
+        </div>
+        <p>
+            Are you sure you want to check out?
+        </p>
+
+        <div data-role="button" data-bind="enabled: isExpress, visible: isNotFree, click: onPerformExpress"
+             id="express-checkout-order" class="express">Place Order
+        </div>
+    </div>
+</div>

@@ -1,0 +1,46 @@
+<div id="dashboard-view" data-init="app.views.dashboard.init"
+     data-before-show="app.views.dashboard.beforeShow"
+     data-show="app.views.dashboard.show"
+     data-role="view" data-title="Restaurants"
+     data-model="app.views.dashboard.viewModel">
+    <header data-role="header">
+        <div data-role="navbar">
+            <span class="location-title bold" data-bind="text: location.LocationName"></span><br/>
+            <span class="location-subtitle" data-bind="text: location.DeliveryLine1"></span>, <span
+                class="location-subtitle" data-bind="text: location.LastLine"></span>
+            <a data-align="right" data-icon="drawer-button" data-rel="drawer" data-role="button"
+               href="#settings-view"></a>
+        </div>
+    </header>
+    <div class="view-content no-pad">
+        <ul data-role="listview" id="day-list" data-style="inset"></ul>
+        <ul id="list" data-role="listview"></ul>
+        <div class="box start-hidden center" id="dashboard-no-deliveries">Sorry, there are no deliveries for today.
+        </div>
+    </div>
+    <script id="tmp" type="text/x-kendo-template">
+        # if (new Date() > new Date(CutOffDateTime)) { #
+        <div class="item-photo-box box">
+            <div class="item-photo" style="background-image:url(#: LogoLink #);"></div>
+        </div>
+        <p class="item-time bold">Bummer! You're late.</p>
+        <p class="item-time">
+            Orders need to be placed by <span class="bold">#: $.format.date(new Date(CutOffDateTime), "h:mm a") #</span>
+        </p>
+        #}
+        else { #
+        <a class="list-delivery-item" data-store="#: StoreId #" data-cutoff="#: CutOffDateTime #"
+           data-dropoff="#: DeliveryTimes[0].DropoffDateTime #" style="display:block;overflow:auto;"
+           rel='#: JSON.stringify({DeliveryTimeId:DeliveryTimes[0].DeliveryTimeId,DeliveryLocationId:DeliveryTimes[0].DeliveryLocationId,StoreId:StoreId,DeliveryId:DeliveryTimes[0].DeliveryId}) #'>
+            <div class="item-photo-box box">
+                <div class="item-photo" style="background-image:url(#: LogoLink #);"></div>
+            </div>
+            <p class="item-time">
+                Delivery time: <span class="item-delivery">#: $.format.date(new Date(DeliveryTimes[0].DropoffDateTime), "h:mm a") #</span>
+            </p>
+
+            <p class="item-time">Order by: #: $.format.date(new Date(CutOffDateTime), "h:mm a") #</p>
+        </a>
+        # } #
+    </script>
+</div>

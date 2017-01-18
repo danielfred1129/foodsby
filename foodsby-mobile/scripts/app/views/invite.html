@@ -1,0 +1,66 @@
+<div id="invite-view" data-init="app.views.invite.init"
+     data-before-show="app.views.invite.beforeShow"
+     data-show="app.views.invite.show"
+     data-role="view" data-title="Build Location"
+     data-model="app.views.invite.viewModel">
+    <header data-role="header">
+        <div data-role="navbar">
+            <span data-role="view-title"></span>
+            <a data-align="right" data-icon="drawer-button" data-rel="drawer" data-role="button"
+               href="#settings-view"></a>
+        </div>
+    </header>
+    <div class="view-content">
+        <div class="office-head">
+            <h3 data-bind="text: officeName"></h3>
+
+            <p><span data-bind="text: officeCount"></span> joined</p>
+
+            <p data-bind="text: officeAddress"></p>
+        </div>
+        <table class="foodsby-form">
+            <thead>
+            <tr>
+                <th>Invite Co-Workers via Contacts</th>
+            </tr>
+            </thead>
+        </table>
+        <div class="ops-buttons" style="margin-top:-1.5em;">
+            <div data-role="button" class="contacts" href="#contacts-view">Find Contacts</div>
+        </div>
+
+        <table class="foodsby-form coworkers">
+            <thead>
+            <tr>
+                <th>Invite Co-Workers via Email</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <input type="email" name="Email" required data-bind="value: email1" placeholder="Email"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="email" name="Email" data-bind="value: email2" placeholder="Email"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="email" name="Email" data-bind="value: email3" placeholder="Email"/>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="ops-buttons">
+            <div data-role="button" class="invite" data-bind="click: onInvite">Send</div>
+        </div>
+    </div>
+    <div data-role="footer">
+        <div data-role="tabstrip" data-selected-index="1">
+            <a data-icon="contacts" href="#invite-view">Invite Co-Workers</a>
+            <a data-icon="info" href="#status-view">Status</a>
+        </div>
+    </div>
+</div>

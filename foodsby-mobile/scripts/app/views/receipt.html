@@ -1,0 +1,104 @@
+<div id="receipt-view" data-init="app.views.receipt.init"
+     data-before-show="app.views.receipt.beforeShow"
+     data-show="app.views.receipt.show"
+     data-role="view" data-title="Order Summary"
+     data-model="app.views.receipt.viewModel">
+    <header data-role="header">
+        <div data-role="navbar">
+            <a class="nav-button" data-align="left" data-transition="slide:left reverse" data-role="button"
+               href="#dashboard-view">Home</a>
+            <span data-role="view-title"></span>
+            <a data-align="right" data-icon="drawer-button" data-rel="drawer" data-role="button"
+               href="#settings-view"></a>
+        </div>
+    </header>
+    <div class="view-content">
+        <div class='centered-header'>Thank You For Your Order</div>
+        <div class='centered-subheader'>Your order details are below</div>
+
+        <table class="foodsby-form receipt-delivery">
+            <thead>
+            <tr>
+                <th colspan="2">Delivery Information</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td style="border-right: none;padding-right:0;">
+                    <div class="item-photo-box box">
+                        <div class="item-photo"></div>
+                    </div>
+                </td>
+                <td style="border-left: none; border-bottom: none;">
+                    <ul id="receipt-delivery">
+                        <li>
+                            Delivery Time:<br/><span data-bind="text: deliveryTime"></span>
+                        </li>
+                        <li>
+                            Location:<br/><span data-bind="text: deliveryLocation"></span>
+                        </li>
+                        <li>
+                            Order Number:<br/><span data-bind="text: orderNumber"></span>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <span id='receipt-instructions' data-bind="text: deliveryInstructions"></span>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <table class="foodsby-form summary">
+            <thead>
+            <tr>
+                <th>Order Summary</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td colspan="2">
+                    <ul id="receipt-list" data-role="listview"></ul>
+                </td>
+            </tr>
+            <tr class='order'>
+                <td>Subtotal</td>
+                <td class='subtotal'>$0.00</td>
+            </tr>
+            <tr class="order discount-row">
+                <td>Discount</td>
+                <td class='discount'>($0.00)</td>
+            </tr>
+            <tr class='order'>
+                <td>Delivery</td>
+                <td class='delivery'>$0.00</td>
+            </tr>
+            <tr class='order'>
+                <td>Tax</td>
+                <td class='tax'>$0.00</td>
+            </tr>
+            <tr class='order emphasize'>
+                <td class='bold'>Total</td>
+                <td class='total bold'>$0.00</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script id="receipt-list-tmp" type="text/x-kendo-template">
+        # if (Price > 0) { #
+        <p class="submenu-list-price">#: '$' + parseFloat(Price, 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g,
+            "$1,").toString() #</p>
+        # }
+
+        #
+        <h3 class="delivery-list-text bold" style="padding-right:5em;font-size:1em;">#: ItemName #
+
+        </h3>
+        #  if (SpecialInstructions != null) { #
+        <p class="delivery-list-text">#: SpecialInstructions #</p>
+        # } #
+    </script>
+</div>
